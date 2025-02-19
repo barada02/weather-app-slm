@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, map, catchError, of, BehaviorSubject } from 'rxjs';
 import { WeatherData,TomorrowApiResponse} from '../models/current-weather';
+import { environment } from '../environments/environment.local';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class WeatherServicesService {
 
   constructor(private http: HttpClient) { }
 
-  private apiKey = 'jyEodjqRRldYkRohEGaoEgiXLN9A61pW'; 
+  private apiKey = environment.apiKey;
   private apiUrl = 'https://api.tomorrow.io/v4/weather/realtime';
 
   getWeatherData(city: string): Observable<WeatherData | null> {
