@@ -1,0 +1,34 @@
+<div class="forecast-container">
+  <h2>Weather Forecast for {{ city }}</h2>
+
+  <div class="daily-forecast">
+    <h3>7-Day Forecast</h3>
+    <div class="forecast-list">
+      <div *ngFor="let day of dailyForecast" class="forecast-item">
+        <p>Date: {{ day.date | date:'shortDate' }}</p>
+        <p>Temperature: {{ day.temperature }}°C</p>
+        <p>Min: {{ day.temperatureMin }}°C | Max: {{ day.temperatureMax }}°C</p>
+        <p>Humidity: {{ day.humidity }}%</p>
+        <p>Precipitation: {{ day.precipitation }}%</p>
+        <p>Wind Speed: {{ day.windSpeed }} m/s</p>
+        <p>{{ day.description }}</p>
+        <hr>
+      </div>
+    </div>
+  </div>
+
+  <div class="hourly-forecast">
+    <h3>Hourly Forecast</h3>
+    <div class="forecast-list">
+      <div *ngFor="let hour of hourlyForecast" class="forecast-item">
+        <p>Time: {{ hour.time | date:'short' }}</p>
+        <p>Temperature: {{ hour.temperature }}°C</p>
+        <p>Humidity: {{ hour.humidity }}%</p>
+        <p>Precipitation: {{ hour.precipitation }}%</p>
+        <p>Wind Speed: {{ hour.windSpeed }} m/s</p>
+        <p>{{ hour.description }}</p>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
