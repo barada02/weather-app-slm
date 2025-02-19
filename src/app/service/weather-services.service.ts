@@ -62,24 +62,24 @@ export class WeatherServicesService {
 
         const dailyForecast = response.timelines.daily.map(day => ({
           date: day.time,
-          temperature: day.values.temperature,
-          temperatureMin: day.values.temperature - 5, 
-          temperatureMax: day.values.temperature + 5, 
-          humidity: day.values.humidity,
-          precipitation: day.values.precipitationProbability,
-          windSpeed: day.values.windSpeed,
+          temperature: day.values.temperatureAvg ?? day.values.temperature ?? 0,
+          temperatureMin: day.values.temperatureMin ?? 0,
+          temperatureMax: day.values.temperatureMax ?? 0,
+          humidity: day.values.humidityAvg ?? day.values.humidity ?? 0,
+          precipitation: day.values.precipitationProbabilityAvg ?? day.values.precipitationProbability ?? 0,
+          windSpeed: day.values.windSpeedAvg ?? day.values.windSpeed ?? 0,
           description: this.getWeatherDescription(
-            day.values.cloudCover,
-            day.values.precipitationProbability
+            day.values.cloudCoverAvg ?? day.values.cloudCover,
+            day.values.precipitationProbabilityAvg ?? day.values.precipitationProbability
           )
         }));
 
         const hourlyForecast = response.timelines.hourly.map(hour => ({
           time: hour.time,
-          temperature: hour.values.temperature,
-          humidity: hour.values.humidity,
-          precipitation: hour.values.precipitationProbability,
-          windSpeed: hour.values.windSpeed,
+          temperature: hour.values.temperature ?? 0,
+          humidity: hour.values.humidity ?? 0,
+          precipitation: hour.values.precipitationProbability ?? 0,
+          windSpeed: hour.values.windSpeed ?? 0,
           description: this.getWeatherDescription(
             hour.values.cloudCover,
             hour.values.precipitationProbability
@@ -98,13 +98,14 @@ export class WeatherServicesService {
     );
   }
 
-  private getWeatherDescription(cloudCover: number, precipProb: number): string {
-    if (precipProb > 50) {
+  private getWeatherDescription(cloudCover: number | undefined, precipProb: number | undefined): string {
+    const cloudCoverValue = cloudCover ?? 0;
+    const precipProbValue = precipProb ?? 0;
+
+    if (precipProbValue > 50) {
       return 'Likely to rain';
-    } else if (cloudCover > 70) {
+    } else if (cloudCoverValue > 50) {
       return 'Cloudy';
-    } else if (cloudCover > 30) {
-      return 'Partly cloudy';
     } else {
       return 'Clear';
     }
