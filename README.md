@@ -54,6 +54,40 @@ ng e2e
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
+## Environment Setup
+
+This project uses environment files to manage API keys and other configuration. Follow these steps to set up your environment:
+
+1. Navigate to the `src/environments` directory
+2. Create `environment.local.ts` for development:
+   ```typescript
+   export const environment = {
+       production: false,
+       apiKey: 'YOUR_TOMORROW_IO_API_KEY_HERE'
+   };
+   ```
+3. Create `environment.prod.ts` for production:
+   ```typescript
+   export const environment = {
+       production: true,
+       apiKey: 'YOUR_TOMORROW_IO_API_KEY_HERE'
+   };
+   ```
+
+**Note:** Never commit your actual API keys to version control. The environment files containing real API keys are listed in `.gitignore`.
+
+### Template Files
+- `environment.template.ts` and `environment.prod.template.ts` are provided as templates
+- Copy these files and rename them to `environment.local.ts` and `environment.prod.ts` respectively
+- Replace the placeholder API key with your actual Tomorrow.io API key
+
+### Security Best Practices
+- Keep your API keys private and never share them
+- Use environment variables in production
+- Consider using a backend proxy to secure API keys in production
+- Regularly rotate your API keys
+- Monitor API usage for any unauthorized access
+
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

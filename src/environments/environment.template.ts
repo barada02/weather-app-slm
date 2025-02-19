@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    apiKey: 'jyEodjqRRldYkRohEGaoEgiXLN9A61pW'
-  };
+    apiKey: 'YOUR_TOMORROW_IO_API_KEY_HERE'
+};

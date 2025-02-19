@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, map, catchError, of, BehaviorSubject } from 'rxjs';
 import { WeatherData,TomorrowApiResponse} from '../models/current-weather';
 import { ForecastResponse, DailyForecast, HourlyForecast } from '../models/forecast';
-import { environment } from '../environments/environment.local';
+import { environment } from '../../environments/environment.local';
 
 @Injectable({
   providedIn: 'root'
