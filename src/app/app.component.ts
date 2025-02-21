@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { TestComponent } from './test/test.component';
 import { CurrentWeatherDisplayComponent } from './components/current-weather-display/current-weather-display.component';
-import { ForecastDisplayComponent } from './forecast-display/forecast-display.component';
+import { WeeklyForecastComponent } from './weekly-forecast/weekly-forecast.component';
+import { HourlyForecastComponent } from './hourly-forecast/hourly-forecast.component';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +11,9 @@ import { ForecastDisplayComponent } from './forecast-display/forecast-display.co
   imports: [
     CommonModule,
     RouterOutlet,
-    TestComponent,
     CurrentWeatherDisplayComponent,
-    ForecastDisplayComponent
+    WeeklyForecastComponent,
+    HourlyForecastComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

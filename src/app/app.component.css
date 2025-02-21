@@ -1,0 +1,30 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.forecast-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+@media (min-width: 1200px) {
+  .forecast-container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  app-weekly-forecast,
+  app-hourly-forecast {
+    flex: 1;
+  }
+}
