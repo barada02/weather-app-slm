@@ -1,8 +1,26 @@
-<div class="container">
-  <h1>Weather App</h1>
-  <app-current-weather-display></app-current-weather-display>
-  <div class="forecast-container">
-    <app-weekly-forecast></app-weekly-forecast>
-    <app-hourly-forecast></app-hourly-forecast>
+<div class="app-container">
+  <!-- Top Section -->
+  <div class="search-section">
+    <app-search-bar></app-search-bar>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Left Sidebar -->
+    <div class="left-sidebar">
+      <app-left-sidebar></app-left-sidebar>
+    </div>
+
+    <!-- Center Content -->
+    <div class="center-content">
+      <app-current-weather-display></app-current-weather-display>
+      <app-hourly-forecast></app-hourly-forecast>
+      <app-more-info></app-more-info>
+    </div>
+
+    <!-- Right Sidebar -->
+    <div class="right-sidebar">
+      <app-weekly-forecast></app-weekly-forecast>
+    </div>
   </div>
 </div>
