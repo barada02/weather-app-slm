@@ -1,26 +1,49 @@
-<div class="app-container">
-  <!-- Top Section -->
-  <div class="search-section">
-    <app-search-bar></app-search-bar>
+<div class="dashboard-container">
+  
+  <!-- Left Sidebar -->
+  <div class="left-sidebar">
+    <app-left-sidebar>
+      
+    </app-left-sidebar>
   </div>
 
-  <!-- Main Content -->
+  <!-- Main Content Area -->
   <div class="main-content">
-    <!-- Left Sidebar -->
-    <div class="left-sidebar">
-      <app-left-sidebar></app-left-sidebar>
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <app-search-bar>
+      </app-search-bar>
     </div>
 
-    <!-- Center Content -->
-    <div class="center-content">
-      <app-current-weather-display></app-current-weather-display>
-      <app-hourly-forecast></app-hourly-forecast>
-      <app-more-info></app-more-info>
+    <!-- Current Weather -->
+    <div class="current-weather-container">
+      <app-current-weather-display>
+        
+      </app-current-weather-display>
     </div>
 
-    <!-- Right Sidebar -->
-    <div class="right-sidebar">
-      <app-weekly-forecast></app-weekly-forecast>
+    <!-- Today's Forecast -->
+    <div class="today-forecast">
+      
+      <div class="forecast-content scrollable">
+        <app-hourly-forecast>
+          <!-- Hourly forecast content will go here -->
+        </app-hourly-forecast>
+      </div>
     </div>
+
+    <!-- Additional Info -->
+    <div class="additional-info">
+      <app-more-info>
+        
+      </app-more-info>
+    </div>
+  </div>
+
+  <!-- Right Sidebar -->
+  <div class="right-sidebar">
+    <app-weekly-forecast>
+      <!-- 7-day forecast will go here -->
+    </app-weekly-forecast>
   </div>
 </div>

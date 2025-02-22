@@ -1,14 +1,10 @@
 <div class="hourly-forecast">
-  <h3>Hourly Forecast for {{ city }}</h3>
-  <div class="forecast-list">
+  <h3>TODAY'S FORECAST</h3>
+  <div class="forecast-container">
     <div *ngFor="let hour of hourlyForecast" class="forecast-item">
-      <p>Time: {{ hour.time | date:'short' }}</p>
-      <p>Temperature: {{ hour.temperature }}°C</p>
-      <p>Humidity: {{ hour.humidity }}%</p>
-      <p>Precipitation: {{ hour.precipitation }}%</p>
-      <p>Wind Speed: {{ hour.windSpeed }} m/s</p>
-      <p>{{ hour.description }}</p>
-      <hr>
+      <div class="time">{{ hour.time | date:'h:mm a' }}</div>
+      <div class="temperature">{{ hour.temperature }}°</div>
+      <div class="description">{{ hour.description }}</div>
     </div>
   </div>
 </div>
