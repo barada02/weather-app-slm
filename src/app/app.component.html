@@ -1,49 +1,28 @@
+<!-- app.component.html -->
 <div class="dashboard-container">
+  <aside class="left-sidebar">
+    <!-- Left sidebar Angular component will go here -->
+  </aside>
   
-  <!-- Left Sidebar -->
-  <div class="left-sidebar">
-    <app-left-sidebar>
-      
-    </app-left-sidebar>
-  </div>
-
-  <!-- Main Content Area -->
-  <div class="main-content">
-    <!-- Search Bar -->
-    <div class="search-bar">
-      <app-search-bar>
-      </app-search-bar>
-    </div>
-
-    <!-- Current Weather -->
-    <div class="current-weather-container">
-      <app-current-weather-display>
-        
-      </app-current-weather-display>
-    </div>
-
-    <!-- Today's Forecast -->
-    <div class="today-forecast">
-      
-      <div class="forecast-content scrollable">
-        <app-hourly-forecast>
-          <!-- Hourly forecast content will go here -->
-        </app-hourly-forecast>
+  <div class="main-section">
+    <main class="main-content">
+      <div class="search-container">
+        <!-- Search bar Angular component will go here -->
       </div>
-    </div>
-
-    <!-- Additional Info -->
-    <div class="additional-info">
-      <app-more-info>
+      
+      <div class="content-layout">
+        <div class="weather-container">
+          <!-- Current weather Angular component will go here -->
+        </div>
         
-      </app-more-info>
-    </div>
-  </div>
+        <div class="forecast-container">
+          <!-- Today's forecast Angular component will go here -->
+        </div>
+      </div>
+    </main>
 
-  <!-- Right Sidebar -->
-  <div class="right-sidebar">
-    <app-weekly-forecast>
-      <!-- 7-day forecast will go here -->
-    </app-weekly-forecast>
+    <aside class="right-sidebar">
+      <!-- Right sidebar Angular component will go here -->
+    </aside>
   </div>
 </div>
