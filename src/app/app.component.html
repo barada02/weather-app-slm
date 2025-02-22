@@ -1,8 +1,33 @@
-<div class="container">
-  <h1>Weather App</h1>
-  <app-current-weather-display></app-current-weather-display>
-  <div class="forecast-container">
-    <app-weekly-forecast></app-weekly-forecast>
-    <app-hourly-forecast></app-hourly-forecast>
+<!-- app.component.html -->
+<div class="dashboard-container">
+  <aside class="left-sidebar">
+    <!-- Left sidebar Angular component will go here -->
+     <app-left-sidebar></app-left-sidebar>
+  </aside>
+  
+  <div class="main-section">
+    <main class="main-content">
+      <div class="search-container">
+        <!-- Search bar Angular component will go here -->
+        <app-search-bar></app-search-bar>
+      </div>
+      
+      <div class="content-layout">
+        <div class="weather-container">
+          <!-- Current weather Angular component will go here -->
+          <app-current-weather-display></app-current-weather-display>
+        </div>
+        
+        <div class="forecast-container">
+          <!-- Today's forecast Angular component will go here -->
+        <app-hourly-forecast></app-hourly-forecast>
+        </div>
+      </div>
+    </main>
+
+    <aside class="right-sidebar">
+      <!-- Right sidebar Angular component will go here -->
+      <app-weekly-forecast></app-weekly-forecast>
+    </aside>
   </div>
 </div>

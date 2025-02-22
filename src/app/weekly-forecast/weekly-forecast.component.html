@@ -1,15 +1,12 @@
 <div class="weekly-forecast">
-  <h3>7-Day Forecast for {{ city }}</h3>
-  <div class="forecast-list">
+  <h3>7-DAY FORECAST</h3>
+  <div class="forecast-content">
     <div *ngFor="let day of weeklyForecast" class="forecast-item">
-      <p>Date: {{ day.date | date:'shortDate' }}</p>
-      <p>Temperature: {{ day.temperature }}°C</p>
-      <p>Min: {{ day.temperatureMin }}°C | Max: {{ day.temperatureMax }}°C</p>
-      <p>Humidity: {{ day.humidity }}%</p>
-      <p>Precipitation: {{ day.precipitation }}%</p>
-      <p>Wind Speed: {{ day.windSpeed }} m/s</p>
-      <p>{{ day.description }}</p>
-      <hr>
+      <div class="day">{{ day.date | date:'EEE' }}</div>
+      <div class="weather-info">
+        <div class="description">{{ day.description }}</div>
+        <div class="temperature">{{ day.temperatureMax }}/{{ day.temperatureMin }}°</div>
+      </div>
     </div>
   </div>
 </div>
