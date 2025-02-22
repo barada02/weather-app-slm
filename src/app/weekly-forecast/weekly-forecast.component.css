@@ -2,32 +2,31 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 16px;
-  background-color: rgba(36, 40, 47, 0.8);
-  border-radius: 16px;
+  gap: 1rem;
 }
 
 h3 {
   color: #fff;
-  margin: 0;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  padding-bottom: 8px;
+  margin: 0;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .forecast-content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0.5rem;
+  overflow-y: auto;
+  height: calc(100% - 2rem); /* Account for header */
 }
 
 .forecast-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
+  padding: 0.75rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -37,45 +36,44 @@ h3 {
 
 .day {
   color: #fff;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 0.9rem;
   min-width: 60px;
 }
 
 .weather-info {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 1rem;
 }
 
 .description {
-  color: #fff;
-  font-size: 0.9rem;
-  min-width: 80px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  min-width: 70px;
 }
 
 .temperature {
   color: #fff;
   font-size: 0.9rem;
-  min-width: 70px;
+  min-width: 60px;
   text-align: right;
 }
 
 /* Custom scrollbar */
-.weekly-forecast::-webkit-scrollbar {
-  width: 6px;
+.forecast-content::-webkit-scrollbar {
+  width: 4px;
 }
 
-.weekly-forecast::-webkit-scrollbar-track {
+.forecast-content::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
+  border-radius: 2px;
 }
 
-.weekly-forecast::-webkit-scrollbar-thumb {
+.forecast-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+.forecast-content::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3);
-  border-radius: 3px;
-}
-
-.weekly-forecast::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.4);
 }
