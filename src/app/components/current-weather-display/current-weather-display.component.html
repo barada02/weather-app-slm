@@ -1,8 +1,41 @@
-<h1>current-weather-display works!</h1>
-<button (click)="showOnUi()">Show on UI</button>
+<div class="weather-display">
+  <div *ngIf="loading" class="loading">
+    Loading weather data...
+  </div>
 
-<h3>{{city}}</h3>
-<p>{{temperature}}</p>
-<p>{{description}}</p>  
-<p>{{humidity}}</p>  
-<p>{{windSpeed}}</p>
+  <div *ngIf="error" class="error">
+    {{ error }}
+    <button (click)="getCurrentLocationWeather()">Retry</button>
+  </div>
+
+  <div *ngIf="!loading && !error" class="weather-content">
+    <div class="location-info">
+      <h2>{{ city }}</h2>
+      <div class="location-details">
+        {{ region }}, {{ country }}
+      </div>
+    </div>
+
+    <div class="temperature">{{ temperature }}°C</div>
+    <div class="description">{{ description }}</div>
+    
+    <div class="details">
+      <div class="detail-item">
+        <span class="label">Humidity</span>
+        <span class="value">{{ humidity }}%</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">Wind Speed</span>
+        <span class="value">{{ windSpeed }} km/h</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">Precipitation</span>
+        <span class="value">{{ precipitation }}%</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">Cloud Cover</span>
+        <span class="value">{{ cloudCover }}%</span>
+      </div>
+    </div>
+  </div>
+</div>
