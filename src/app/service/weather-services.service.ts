@@ -12,20 +12,24 @@ export class WeatherServicesService {
 
   constructor(private http: HttpClient) { }
 
-  private apiKey = environment.apiKey;
+  private apiKey = environment.tomorrowIoApiKey;
   private apiUrl = 'https://api.tomorrow.io/v4/weather/realtime';
   private forecastUrl = 'https://api.tomorrow.io/v4/weather/forecast';
 
   getWeatherData(city: string): Observable<WeatherData | null> {
     const headers = new HttpHeaders().set('apikey', this.apiKey);
     const params = new HttpParams()
-    .set('location', city)
-    .set('units', 'metric');
+      .set('location', city)
+      .set('units', 'metric');
 
     return this.http.get<TomorrowApiResponse>(this.apiUrl, { headers, params }).pipe(
       map(response => {
-        const weatherData: WeatherData = {
-          city: response.location.name,
+        if (!response || !response.data || !response.data.values) {
+          return null;
+        }
+
+        return {
+          city: city,
           temperature: response.data.values.temperature,
           description: this.getWeatherDescription(
             response.data.values.cloudCover,
@@ -36,15 +40,11 @@ export class WeatherServicesService {
           precipitation: response.data.values.precipitationProbability,
           cloudCover: response.data.values.cloudCover
         };
-        
-        
-        
-        return weatherData;
       }),
       catchError(error => {
         console.error('Error fetching weather:', error);
-        return of(null);})
-
+        return of(null);
+      })
     );
   }
 
