@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
-import { WeatherServicesService } from '../service/weather-services.service';
 import { DailyForecast } from '../models/forecast';
 
 @Component({
@@ -11,22 +10,12 @@ import { DailyForecast } from '../models/forecast';
   imports: [CommonModule, DatePipe]
 })
 export class WeeklyForecastComponent implements OnInit {
-  weeklyForecast: DailyForecast[] = [];
-  city: string = 'New York'; // Default city
+  @Input() weeklyForecast: DailyForecast[] = [];
+  @Input() city: string = 'New York';
 
-  constructor(private weatherService: WeatherServicesService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.getWeeklyForecast();
-  }
-
-  getWeeklyForecast() {
-    this.weatherService.getForecastData(this.city).subscribe(
-      forecast => {
-        if (forecast) {
-          this.weeklyForecast = forecast.daily;
-        }
-      }
-    );
+    // No need to fetch data here anymore
   }
 }
