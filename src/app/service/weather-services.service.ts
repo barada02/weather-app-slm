@@ -12,7 +12,7 @@ export class WeatherServicesService {
 
   constructor(private http: HttpClient) { }
 
-  private apiKey = environment.tomorrowIoApiKey;
+  private apiKey = environment.tomorrowIoApiKey2;
   private apiUrl = 'https://api.tomorrow.io/v4/weather/realtime';
   private forecastUrl = 'https://api.tomorrow.io/v4/weather/forecast';
 
