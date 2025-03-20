@@ -5,7 +5,6 @@
 
   <div *ngIf="error" class="error">
     {{ error }}
-    <button (click)="getCurrentLocationWeather()">Retry</button>
   </div>
 
   <div *ngIf="!loading && !error" class="weather-content">

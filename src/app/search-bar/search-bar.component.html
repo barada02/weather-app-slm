@@ -1,6 +1,6 @@
 <div class="search-container">
-  <input type="text" placeholder="Search for a city..." class="search-input">
-  <button class="search-button">
+  <input type="text" placeholder="Search for a city..." class="search-input" [(ngModel)]="searchQuery" (keyup.enter)="onSearch()">
+  <button class="search-button" (click)="onSearch()">
     <span>Search</span>
   </button>
 </div>

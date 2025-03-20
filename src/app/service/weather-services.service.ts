@@ -48,39 +48,6 @@ export class WeatherServicesService {
     );
   }
 
-  getWeatherByCoordinates(lat: number, lon: number): Observable<WeatherData | null> {
-    const headers = new HttpHeaders().set('apikey', this.apiKey);
-    const params = new HttpParams()
-      .set('location', `${lat},${lon}`)
-      .set('units', 'metric');
-
-    return this.http.get<TomorrowApiResponse>(this.apiUrl, { headers, params }).pipe(
-      map(response => this.mapWeatherResponse(response)),
-      catchError(error => {
-        console.error('Error fetching weather:', error);
-        return of(null);})
-    );
-  }
-
-  private mapWeatherResponse(response: TomorrowApiResponse): WeatherData | null {
-    if (!response || !response.data || !response.data.values) {
-      return null;
-    }
-
-    return {
-      city: response.location?.name || 'Unknown Location',
-      temperature: response.data.values.temperature,
-      description: this.getWeatherDescription(
-        response.data.values.cloudCover,
-        response.data.values.precipitationProbability
-      ),
-      humidity: response.data.values.humidity,
-      windSpeed: response.data.values.windSpeed,
-      precipitation: response.data.values.precipitationProbability,
-      cloudCover: response.data.values.cloudCover
-    };
-  }
-
   getForecastData(city: string): Observable<{ daily: DailyForecast[], hourly: HourlyForecast[] } | null> {
     const headers = new HttpHeaders().set('apikey', this.apiKey);
     const params = new HttpParams()
