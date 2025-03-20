@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { WeatherServicesService } from '../../service/weather-services.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { WeatherData } from '../../models/current-weather';
 
 @Component({
   selector: 'app-current-weather-display',
@@ -11,28 +9,33 @@ import { CommonModule } from '@angular/common';
   templateUrl: './current-weather-display.component.html',
   styleUrls: ['./current-weather-display.component.css']
 })
-export class CurrentWeatherDisplayComponent  {
-  city: string |null = null;
-  temperature: number |null = null;
-  description: string |null = null;
-  humidity: number |null = null;
-  windSpeed: number |null = null;
-  precipitation: number |null = null;
-  cloudCover: number |null = null;
+export class CurrentWeatherDisplayComponent implements OnInit {
+  @Input() city: string | null = null;
+  @Input() region: string | null = null;
+  @Input() country: string | null = null;
+  @Input() loading: boolean = true;
+  @Input() error: string | null = null;
+  @Input() set currentWeather(data: WeatherData | null) {
+    if (data) {
+      this.temperature = data.temperature;
+      this.description = data.description;
+      this.humidity = data.humidity;
+      this.windSpeed = data.windSpeed;
+      this.precipitation = data.precipitation;
+      this.cloudCover = data.cloudCover;
+    }
+  }
+  
+  temperature: number | null = null;
+  description: string | null = null;
+  humidity: number | null = null;
+  windSpeed: number | null = null;
+  precipitation: number | null = null;
+  cloudCover: number | null = null;
 
-  constructor(private weatherService: WeatherServicesService) { }
+  constructor() { }
 
-  showOnUi() {
-    this.weatherService.getWeatherData('San Francisco').subscribe(data => {
-      if (data){
-        this.city = data.city;
-        this.temperature = data.temperature;
-        this.description = data.description;
-        this.humidity = data.humidity;
-        this.windSpeed = data.windSpeed;
-        this.precipitation = data.precipitation;
-        this.cloudCover = data.cloudCover;
-      }
-    });
+  ngOnInit() {
+    // No need to fetch data here anymore
   }
 }

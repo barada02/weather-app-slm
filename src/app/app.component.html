@@ -9,25 +9,43 @@
     <main class="main-content">
       <div class="search-container">
         <!-- Search bar Angular component will go here -->
-        <app-search-bar></app-search-bar>
+        <app-search-bar 
+          (cityChanged)="updateCity($event)" 
+          (resetToCurrentLocation)="resetToCurrentLocation()"
+        ></app-search-bar>
       </div>
       
-      <div class="content-layout">
+      <div *ngIf="loading" class="loading">
+        Loading forecast data...
+      </div>
+      
+      <div *ngIf="error" class="error">
+        {{ error }}
+      </div>
+      
+      <div class="content-layout" *ngIf="!loading && !error">
         <div class="weather-container">
           <!-- Current weather Angular component will go here -->
-          <app-current-weather-display></app-current-weather-display>
+          <app-current-weather-display 
+            [currentWeather]="currentWeather"
+            [city]="city"
+            [region]="region"
+            [country]="country"
+            [loading]="loading"
+            [error]="error"
+          ></app-current-weather-display>
         </div>
         
         <div class="forecast-container">
           <!-- Today's forecast Angular component will go here -->
-        <app-hourly-forecast></app-hourly-forecast>
+          <app-hourly-forecast [hourlyForecast]="hourlyForecast" [city]="city"></app-hourly-forecast>
         </div>
       </div>
     </main>
 
-    <aside class="right-sidebar">
+    <aside class="right-sidebar" *ngIf="!loading && !error">
       <!-- Right sidebar Angular component will go here -->
-      <app-weekly-forecast></app-weekly-forecast>
+      <app-weekly-forecast [weeklyForecast]="dailyForecast" [city]="city"></app-weekly-forecast>
     </aside>
   </div>
 </div>
