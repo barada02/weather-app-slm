@@ -31,7 +31,8 @@ export class AppComponent implements OnInit {
   title = 'weather-app-slm';
   dailyForecast: DailyForecast[] = [];
   hourlyForecast: HourlyForecast[] = [];
-  city: string = 'New York'; // Default city
+  currentLocationCity: string = ''; // City from geolocation
+  city: string = ''; // City used for API calls, initialized with currentLocationCity
   region: string = '';
   country: string = '';
   currentWeather: WeatherData | null = null;
@@ -53,7 +54,8 @@ export class AppComponent implements OnInit {
 
     this.locationService.getCurrentLocation().subscribe({
       next: (location: LocationDetails) => {
-        this.city = location.city;
+        this.currentLocationCity = location.city;
+        this.city = this.currentLocationCity; // Initialize search city with current location
         this.region = location.region;
         this.country = location.country;
         
@@ -64,9 +66,6 @@ export class AppComponent implements OnInit {
         console.error('Error getting location:', error);
         this.error = 'Failed to get location';
         this.loading = false;
-        
-        // Fallback to default city
-        this.getWeatherData();
       }
     });
   }
@@ -123,5 +122,18 @@ export class AppComponent implements OnInit {
     this.loading = true;
     this.error = null;
     this.getWeatherData();
+  }
+
+  // Method to reset to current location
+  resetToCurrentLocation() {
+    if (this.currentLocationCity) {
+      this.city = this.currentLocationCity;
+      this.loading = true;
+      this.error = null;
+      this.getWeatherData();
+    } else {
+      // If current location isn't available, try to get it again
+      this.getLocationAndWeather();
+    }
   }
 }

@@ -1,22 +1,27 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-search-bar',
-  templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule],
+  templateUrl: './search-bar.component.html',
+  styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent {
   searchQuery: string = '';
   @Output() cityChanged = new EventEmitter<string>();
+  @Output() resetToCurrentLocation = new EventEmitter<void>();
 
   onSearch() {
     if (this.searchQuery.trim()) {
       this.cityChanged.emit(this.searchQuery.trim());
-      console.log('Searching for:', this.searchQuery);
     }
+  }
+
+  onResetToCurrentLocation() {
+    this.resetToCurrentLocation.emit();
+    this.searchQuery = ''; // Clear the search field
   }
 }

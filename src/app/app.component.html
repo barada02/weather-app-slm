@@ -9,7 +9,10 @@
     <main class="main-content">
       <div class="search-container">
         <!-- Search bar Angular component will go here -->
-        <app-search-bar (cityChanged)="updateCity($event)"></app-search-bar>
+        <app-search-bar 
+          (cityChanged)="updateCity($event)" 
+          (resetToCurrentLocation)="resetToCurrentLocation()"
+        ></app-search-bar>
       </div>
       
       <div *ngIf="loading" class="loading">
@@ -40,7 +43,7 @@
       </div>
     </main>
 
-    <aside class="right-sidebar">
+    <aside class="right-sidebar" *ngIf="!loading && !error">
       <!-- Right sidebar Angular component will go here -->
       <app-weekly-forecast [weeklyForecast]="dailyForecast" [city]="city"></app-weekly-forecast>
     </aside>
