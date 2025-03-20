@@ -6,7 +6,7 @@ import { WeeklyForecastComponent } from './weekly-forecast/weekly-forecast.compo
 import { HourlyForecastComponent } from './hourly-forecast/hourly-forecast.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
-import { MoreInfoComponent } from './more-info/more-info.component';
+
 
 @Component({
   selector: 'app-root',
@@ -18,7 +18,7 @@ import { MoreInfoComponent } from './more-info/more-info.component';
     HourlyForecastComponent,
     SearchBarComponent,
     LeftSidebarComponent,
-    MoreInfoComponent,
+ 
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
