@@ -1,1 +1,33 @@
-<p>left-sidebar works!</p>
+<div class="sidebar-container">
+  <!-- Current Location Weather Card -->
+  <div class="location-card" (click)="onResetToCurrentLocation()">
+    <div *ngIf="loading" class="loading">
+      Loading...
+    </div>
+    
+    <div *ngIf="error" class="error">
+      {{ error }}
+    </div>
+    
+    <div *ngIf="!loading && !error && currentWeather" class="weather-card">
+      <h3 class="location-title">{{ currentLocationCity }}</h3>
+      <div class="temperature">{{ currentWeather.temperature }}°C</div>
+      <div class="description">{{ currentWeather.description }}</div>
+    </div>
+  </div>
+  
+  <!-- Buttons -->
+  <div class="button-container">
+    <button class="sidebar-button refresh-button" (click)="refreshWeather()">
+      <span>Refresh</span>
+    </button>
+    
+    <button class="sidebar-button location-button" (click)="onResetToCurrentLocation()">
+      <span>My Location</span>
+    </button>
+    
+    <button class="sidebar-button settings-button" (click)="openSettings()">
+      <span>Settings</span>
+    </button>
+  </div>
+</div>
