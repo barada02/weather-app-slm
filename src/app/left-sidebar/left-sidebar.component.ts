@@ -77,4 +77,9 @@ export class LeftSidebarComponent implements OnInit {
     // This will be implemented later when we add settings functionality
     console.log('Settings button clicked');
   }
+  
+  openAdvanced() {
+    // This will be implemented later when we add advanced functionality
+    console.log('Advanced button clicked');
+  }
 }
